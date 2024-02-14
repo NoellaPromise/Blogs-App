@@ -18,11 +18,14 @@ const fs = require('fs');
 //     });
 
 //directories
+if(!fs.existsSync('./assets')){
+    fs.mkdir('./assets',(err)=>{
+        if(err){
+            console.log(err)
+        }
+        console.log('folder was created')
+        
+    });
 
-fs.mkdir('./assets',(err)=>{
-    if(err){
-        console.log(err)
-    }
-    console.log('folder was created')
-    
-});
+}
+

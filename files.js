@@ -13,6 +13,16 @@ const fs = require('fs');
 // console.log('file was written')
 // });
 
-fs.writeFile('./docs/blog1.txt','Hello again',()=>{
-    console.log('file was written')
-    });
+// fs.writeFile('./docs/blog1.txt','Hello again',()=>{
+//     console.log('file was written')
+//     });
+
+//directories
+
+fs.mkdir('./assets',(err)=>{
+    if(err){
+        console.log(err)
+    }
+    console.log('folder was created')
+    
+});

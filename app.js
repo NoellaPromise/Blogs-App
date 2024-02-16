@@ -1,9 +1,12 @@
 const express = require('express');
 const morgan = require('morgan');
+const mongoose = require('mongoose');
 
 // express app
 const app = express();
-
+//connect to mongodb
+const dbURI = 'mongodb+srv://<netninja>:<test12345>@nodejs.duje4qq.mongodb.net/nodetuts?retryWrites=true&w=majority';
+mongoose.connect(dbURI);
 // listen for requests
 app.listen(3000);
 

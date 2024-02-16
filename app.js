@@ -57,6 +57,15 @@ app.get('/all-blogs',(req,res)=>{
         console.log(err);
     })
 })
+app.get('/single-blog',(req,res)=>{
+    Blog.findById('65cf7b50771e7a6bd1f9faf4')
+    .then((result)=>{
+        res.send(result)
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+})
 
 app.use((req, res, next) => {
   res.locals.path = req.path;

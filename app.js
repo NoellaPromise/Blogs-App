@@ -9,6 +9,9 @@ app.get("/about", (req, res) => {
   res.render("about");
 });
 
+app.get("/blogs/create", (req, res) => {
+  res.render("create");
+});
 app.use((req, res) => {
   res.status(404).render("404");
 });

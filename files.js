@@ -7,7 +7,6 @@ const fs = require('fs');
 // }
 // console.log(data.toString());
 // });
-
 //writing files
 // fs.writeFile('./docs/blog.txt','Hello again',()=>{
 // console.log('file was written')

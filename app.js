@@ -101,14 +101,15 @@ blog.save()
 })
 app.get ('/blogs/:id', (req,res)=>{
   const id = req.params.id;
-  Blog.findById(id)
-  .then(result=>{
-    res.render('details',{blog:result,title:'Blog details'})
-  })
-  .catch((err=>{
-    console.log(err)
-  }))
-})
+  Blog.findByIdAndDelete(id)
+    .then(result => {
+      res.json({ redirect: '/blogs' });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+  
 
 // 404 page
 app.use((req, res) => {

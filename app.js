@@ -98,6 +98,9 @@ blog.save()
   console.log(err)
 })
 })
+app.get ('/blogs/:id', (req,res)=>{
+  const id = req.params.id
+})
 
 
 // 404 page

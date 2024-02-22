@@ -9,8 +9,7 @@ const app = express();
 
 // connect to mongodb & listen for requests
 const dbURI =
-  "mongodb+srv://netninja:test12345@nodejs.duje4qq.mongodb.net/nodetuts?retryWrites=true&w=majority";
-
+  "mongodb+srv://netninja:test12345@nodejs.duje4qq.mongodb.net/?retryWrites=true&w=majority&appName=NodeJ";
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => app.listen(3000))
@@ -21,7 +20,7 @@ app.set("view engine", "ejs");
 
 // middleware & static files
 app.use(express.static("public"));
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use((req, res, next) => {
   res.locals.path = req.path;
@@ -89,27 +88,28 @@ app.get("/blogs", (req, res) => {
       console.log(err);
     });
 });
-app.post('/blogs',(req,res)=>{
-const blog = new Blog(req.body)
-blog.save()
-.then((result)=>{
-  res.redirect('/blogs')
-})
-.catch((err) => {
-  console.log(err)
-})
-})
-app.get ('/blogs/:id', (req,res)=>{
-  const id = req.params.id;
-  Blog.findByIdAndDelete(id)
-    .then(result => {
-      res.json({ redirect: '/blogs' });
+app.post("/blogs", (req, res) => {
+  const blog = new Blog(req.body);
+  blog
+    .save()
+    .then((result) => {
+      res.redirect("/blogs");
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 });
-  
+app.get("/blogs/:id", (req, res) => {
+  const id = req.params.id;
+  Blog.findByIdAndDelete(id)
+    .then((result) => {
+      res.json({ redirect: "/blogs" });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 // 404 page
 app.use((req, res) => {
   res.status(404).render("404", { title: "404" });
